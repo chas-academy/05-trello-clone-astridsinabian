@@ -23,10 +23,13 @@ const jtrello = (function() {
     DOM.$columns = $('.column');
     DOM.$lists = $('.list');
     DOM.$cards = $('.card');
+
     
+  
     DOM.$newListButton = $('button#new-list');
     DOM.$deleteListButton = $('.list-header > button.delete');
 
+    DOM.$addCardButton = $(' form.new-card > .button.add')
     DOM.$newCardForm = $('form.new-card');
     DOM.$deleteCardButton = $('.card > button.delete');
   }
@@ -50,6 +53,8 @@ const jtrello = (function() {
   function createList() {
     event.preventDefault();
     console.log("This should create a new list");
+
+    $($)
   }
 
   function deleteList() {
@@ -57,13 +62,23 @@ const jtrello = (function() {
   }
 
   /* =========== Metoder för att hantera kort i listor nedan =========== */
+
   function createCard(event) {
+
+    let cardInput = $("input:text").val();
+    console.log(cardInput);
+
+
     event.preventDefault();
-    console.log("This should create a new card");
+    
+
   }
 
   function deleteCard() {
-    console.log("This should delete the card you clicked on");
+
+    console.log("This should delete the card you clicked");
+
+  
   }
 
   // Metod för att rita ut element i DOM:en
@@ -73,7 +88,7 @@ const jtrello = (function() {
 
   // Init metod som körs först
   function init() {
-    console.log(':::: Initializing JTrello ::::');
+    console.log(':::: Initializing JTrello!!!!3 ::::');
     // Förslag på privata metoder
     captureDOMEls();
     createTabs();
