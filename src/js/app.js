@@ -68,7 +68,6 @@ const jtrello = (function() {
     let cardInput = $("input:text").val();
     console.log(cardInput);
 
-
     event.preventDefault();
     
 
@@ -76,9 +75,9 @@ const jtrello = (function() {
 
   function deleteCard() {
 
-    console.log("This should delete the card you clicked");
-
+    $(this).parent().remove();
   
+
   }
 
   // Metod för att rita ut element i DOM:en
