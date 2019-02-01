@@ -8,22 +8,18 @@ import '../css/styles.css';
  * @return {Object} [Publikt tillgänliga metoder som vi exponerar]
  */
 
-// Här tillämpar vi mönstret reavealing module pattern:
-// Mer information om det mönstret här: https://bit.ly/1nt5vXP
 const jtrello = (function() {
-  "use strict"; // https://lucybain.com/blog/2014/js-use-strict/
+  "use strict"; 
 
-  // Referens internt i modulen för DOM element
+
   let DOM = {};
 
-  /* =================== Privata metoder nedan ================= */
   function captureDOMEls() {
     DOM.$board = $('.board');
     DOM.$listDialog = $('#list-creation-dialog');
     DOM.$columns = $('.column');
     DOM.$lists = $('.list');
     DOM.$cards = $('.card');
-    DOM.$showButton = $('#show');
 
 
     DOM.$newListButton = $('button#new-list');
@@ -34,13 +30,7 @@ const jtrello = (function() {
     DOM.$deleteCardButton = $('.card > button.delete');
   }
 
-  // function createTabs() {}
-  // function createDialogs() {}
-
-  /*
-  *  Denna metod kommer nyttja variabeln DOM för att binda eventlyssnare till
-  *  createList, deleteList, createCard och deleteCard etc.
-  */
+  
   function bindEvents() {
     DOM.$newListButton.on('click', createList);
     DOM.$deleteListButton.on('click', deleteList);
@@ -49,7 +39,7 @@ const jtrello = (function() {
     DOM.$deleteCardButton.on('click', deleteCard);
   }
 
-  /* ============== Metoder för att hantera listor nedan ============== */
+
   function createList() {
     event.preventDefault();
     console.log("This should create a new list");
@@ -57,29 +47,35 @@ const jtrello = (function() {
     $($)
   }
 
+
   function deleteList() {
     console.log("This should delete the list you clicked on");
   }
 
-  /* =========== Metoder för att hantera kort i listor nedan =========== */
 
   function createCard(event) {
 
     let cardInput = $("input:text").val();
-    console.log(cardInput);
+    let liInput = $(`<li class="card">${cardInput}<button class="update">Update</button> <button class="button delete">x</button</li>`);
+
+    $(this).closest('.list-cards').prepend(liInput).effect("bounce", { times: 1 }, "slow" );
+
+    createDialogs();
+    liInput.find('.button.delete').on('click', deleteCard);
 
     event.preventDefault();
 
+    $("<div></div>")
+    .appendTo("<li class='card'></li>")
+    .tooltip("option", "content", "Awesome title!" );
 
   }
 
   function deleteCard() {
 
     $(this).parent().remove();
-
+    
   }
-
-  /* =================== Metoder för jQuery ================== */
 
   function dragDrop() {
 
@@ -99,6 +95,8 @@ const jtrello = (function() {
   }
 
   function createTabs() {
+
+    $("#tabs").tabs();
 
   }
 
@@ -124,8 +122,7 @@ const jtrello = (function() {
       $("#dialog").dialog("open");
     });
 
-    $("#tabs").tabs();
-
+    createTabs();
 
   }
 
@@ -137,32 +134,80 @@ const jtrello = (function() {
 
   }
 
-  // Metod för att rita ut element i DOM:en
+
+  function setColorWidget() {
+
+      $.widget("custom.colorize", {
+     
+        _create: function() {
+          this.element
+            .addClass( "colorizer" );
+   
+          this.changer = $("<button>", {
+            text: "Change background color",
+            "class": "colorize"
+          })
+          .appendTo(this.element)
+          .button();
+
+        this._on( this.changer, {
+          click: "random"
+        });
+      },
+
+      _refresh: function() {
+        this.element.css( "background-color", "rgb(" +
+          this.options.red +"," +
+          this.options.green + "," +
+          this.options.blue + ")"
+        );
+      },
+
+      random: function( event ) {
+        var colors = {
+          red: Math.floor( Math.random() * 256 ),
+          green: Math.floor( Math.random() * 256 ),
+          blue: Math.floor( Math.random() * 256 )
+        };
+ 
+        if ( this._trigger( "random", event, colors ) !== false ) {
+          this.option( colors );
+        }
+      },
+
+      _setOptions: function() {
+        this._superApply( arguments );
+        this._refresh();
+      }
+    });
+        $("#view-card").colorize();
+    }
+  
+  
+
   function render() {}
 
-  /* =================== Publika metoder nedan ================== */
 
-  // Init metod som körs först
   function init() {
-    console.log(':::: Initializing JTrello!!!!3 ::::');
-    // Förslag på privata metoder
+
     captureDOMEls();
     createTabs();
     createDialogs();
     dragDrop();
     datePicker();
     showCreateCard();
+    setColorWidget();
 
     bindEvents();
   }
 
-  // All kod här
+
   return {
     init: init
   };
 })();
 
-//usage
+
 $("document").ready(function() {
   jtrello.init();
 });
