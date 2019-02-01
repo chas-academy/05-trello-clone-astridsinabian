@@ -92,6 +92,20 @@ const jtrello = (function() {
 
   }
 
+  function datePicker() {
+
+    $(".datepicker").datepicker();
+
+  }
+
+  function createTabs() {
+
+  }
+
+  function createDialogs() {
+
+  }
+
   // Metod för att rita ut element i DOM:en
   function render() {}
 
@@ -105,6 +119,7 @@ const jtrello = (function() {
     createTabs();
     createDialogs();
     dragDrop();
+    datePicker();
 
     bindEvents();
   }
