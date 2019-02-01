@@ -75,7 +75,7 @@ const jtrello = (function() {
 
   function deleteCard() {
 
-    $(this).parent().remove();
+    $(this).parent().remove();    
 
   }
   
@@ -103,6 +103,24 @@ const jtrello = (function() {
   }
 
   function createDialogs() {
+
+    $("#dialog").dialog({
+      title: "Dialog message",
+      autoOpen: false,
+      modal: true,
+      draggable: false,
+      position: { 
+        my: "left top", 
+        at: "left bottom", 
+        of: "button"
+      }
+    });
+
+    $("#opener").click(function() {
+      $("#dialog").dialog("open");
+    });
+
+    
 
   }
 
