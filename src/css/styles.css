@@ -196,3 +196,7 @@ input {
 .ui-datepicker {
   background-color: white;
 }
+
+.toggle-createcard {
+  display: none;
+}

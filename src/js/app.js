@@ -23,9 +23,9 @@ const jtrello = (function() {
     DOM.$columns = $('.column');
     DOM.$lists = $('.list');
     DOM.$cards = $('.card');
+    DOM.$showButton = $('#show');
 
-    
-  
+
     DOM.$newListButton = $('button#new-list');
     DOM.$deleteListButton = $('.list-header > button.delete');
 
@@ -34,8 +34,8 @@ const jtrello = (function() {
     DOM.$deleteCardButton = $('.card > button.delete');
   }
 
-  function createTabs() {}
-  function createDialogs() {}
+  // function createTabs() {}
+  // function createDialogs() {}
 
   /*
   *  Denna metod kommer nyttja variabeln DOM för att binda eventlyssnare till
@@ -69,16 +69,16 @@ const jtrello = (function() {
     console.log(cardInput);
 
     event.preventDefault();
-    
+
 
   }
 
   function deleteCard() {
 
-    $(this).parent().remove();    
+    $(this).parent().remove();
 
   }
-  
+
   /* =================== Metoder för jQuery ================== */
 
   function dragDrop() {
@@ -109,9 +109,9 @@ const jtrello = (function() {
       autoOpen: false,
       modal: true,
       draggable: false,
-      position: { 
-        my: "left top", 
-        at: "left bottom", 
+      position: {
+        my: "left top",
+        at: "left bottom",
         of: "button"
       }
     });
@@ -120,7 +120,14 @@ const jtrello = (function() {
       $("#dialog").dialog("open");
     });
 
-    
+
+  }
+
+  function showCreateCard() {
+
+    $(".toggle-button").click(function() {
+      $(this).next().toggle("fold", 1000);
+    });
 
   }
 
@@ -138,6 +145,7 @@ const jtrello = (function() {
     createDialogs();
     dragDrop();
     datePicker();
+    showCreateCard();
 
     bindEvents();
   }
