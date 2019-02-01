@@ -105,20 +105,26 @@ const jtrello = (function() {
   function createDialogs() {
 
     $("#dialog").dialog({
-      title: "Dialog message",
+      title: "Update your card",
       autoOpen: false,
       modal: true,
-      draggable: false,
-      position: {
-        my: "left top",
-        at: "left bottom",
-        of: "button"
+      height: 300,
+      width: 500,
+      show: {
+        effect: "fade",
+        duration: 500
+      },
+      hide: {
+        effect: "fade",
+        duration: 500
       }
     });
 
-    $("#opener").click(function() {
+    $(".update").click(function() {
       $("#dialog").dialog("open");
     });
+
+    $("#tabs").tabs();
 
 
   }
@@ -126,7 +132,7 @@ const jtrello = (function() {
   function showCreateCard() {
 
     $(".toggle-button").click(function() {
-      $(this).next().toggle("fold", 1000);
+      $(this).next().toggle("blind", 500);
     });
 
   }

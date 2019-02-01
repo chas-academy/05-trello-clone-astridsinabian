@@ -12,21 +12,40 @@
             <div class="list">
                 <div class="list-header">
                     Todo
-                    <button id="opener">i</button>
-                    <div id="dialog">Hej! Detta är dialogens innehåll.</div>
                     <button class="button delete">X</button>
                 </div>
+
+                <div id="dialog">
+                    
+                    <div id="tabs">
+                        <ul>
+                            <li><a href="#view-card"><span>Full card view</span></a></li>
+                            <li><a href="#update-card"><span>Update card</span></a></li>
+                        </ul>
+                        <div id="view-card">
+                                <p>Here is where the full view of the card is going to be shown.</p>
+                              </div>
+                              <div id="update-card">
+                                Here is where you can update your card.
+                              </div>
+                    </div>
+
+                </div>
+
                 <ul class="list-cards">
                     <li class="card">
                         Card #1
+                        <button class="update">Update</button>
                         <button class="button delete">X</button>
                     </li>
                     <li class="card">
                         Card #4
+                        <button class="update">Update</button>
                         <button class="button delete">X</button>
                     </li>
                     <li class="card">
                         Card #5
+                        <button class="update">Update</button>
                         <button class="button delete">X</button>
                     </li>
                     <button class="toggle-button">+ Create card</button>
@@ -54,6 +73,7 @@
                 <ul class="list-cards">
                     <li class="card">
                         Card #2
+                        <button class="update">Update</button>
                         <button class="button delete">X</button>
                     </li>
 
@@ -79,9 +99,10 @@
                 <ul class="list-cards">
                     <li class="card">
                         Card #3
+                        <button class="update">Update</button>
                         <button class="button delete">X</button>
                     </li>
-                    <button class="toggle-button">+ Create card</button>
+                    <button class="toggle-button">+ Create new card</button>
                     <div class="toggle-createcard">
                     <li class="add-new">
                         <form class="new-card" action="index.html">
@@ -96,13 +117,10 @@
         </div>
         <div class="column">
             <button id="new-list" class="button">Add new list</button>
+            <form> 
+                <input type="text" name="title" placeholder="List title" />
+            </form>
         </div>
-    </div>
-
-    <div id="list-creation-dialog" title="Create new list" style="height: 40px">
-        <form> 
-            <input type="text" name="title" placeholder="List title" />
-        </form>
     </div>
 
 </body>

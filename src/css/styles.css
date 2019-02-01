@@ -154,8 +154,16 @@ input {
   display: inline-flex;
 }
 
+.update {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+  padding: 0;
+
+}
+
 .ui-button,
-.button {
+button {
   display: inline-flex;
   overflow: hidden;
   padding: 8px 10px;
