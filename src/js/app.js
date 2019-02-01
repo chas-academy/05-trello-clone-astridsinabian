@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-// require('webpack-jquery-ui');
+require('webpack-jquery-ui');
 import '../css/styles.css';
 
 /**
@@ -76,7 +76,19 @@ const jtrello = (function() {
   function deleteCard() {
 
     $(this).parent().remove();
+
+  }
   
+  /* =================== Metoder för jQuery ================== */
+
+  function dragDrop() {
+
+  $(".list-cards").sortable({
+    placeholder: 'placeholder',
+    opacity: 0.7,
+    connectWith: '.list-cards',
+    items: '.card'
+  });
 
   }
 
@@ -92,6 +104,7 @@ const jtrello = (function() {
     captureDOMEls();
     createTabs();
     createDialogs();
+    dragDrop();
 
     bindEvents();
   }
