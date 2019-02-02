@@ -49,14 +49,16 @@ const jtrello = (function() {
 
 
   function deleteList() {
-    console.log("This should delete the list you clicked on");
+
+    $(this).closest('.column').remove();
+
   }
 
 
   function createCard(event) {
 
     let cardInput = $("input:text").val();
-    let liInput = $(`<li class="card">${cardInput}<button class="update">Update</button> <button class="button delete">x</button</li>`);
+    let liInput = $(`<li class="card">${cardInput}<button class="update"><i class="far fa-edit"></i></button> <button class="button delete"><i class="fas fa-trash-alt"></i></button</li>`);
 
     $(this).closest('.list-cards').prepend(liInput).effect("bounce", { times: 1 }, "slow" );
 
