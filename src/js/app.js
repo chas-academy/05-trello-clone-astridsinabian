@@ -22,7 +22,7 @@ const jtrello = (function() {
     DOM.$cards = $('.card');
 
 
-    DOM.$newListButton = $('button#new-list');
+    DOM.$newListButton = $('.new-list > .button.add-list');
     DOM.$deleteListButton = $('.list-header > button.delete');
 
     DOM.$addCardButton = $(' form.new-card > .button.add')
@@ -41,10 +41,11 @@ const jtrello = (function() {
 
 
   function createList() {
+    
     event.preventDefault();
     console.log("This should create a new list");
+    
 
-    $($)
   }
 
 
@@ -60,16 +61,14 @@ const jtrello = (function() {
     let cardInput = $("input:text").val();
     let liInput = $(`<li class="card">${cardInput}<button class="update"><i class="far fa-edit"></i></button> <button class="button delete"><i class="fas fa-trash-alt"></i></button</li>`);
 
+
     $(this).closest('.list-cards').prepend(liInput).effect("bounce", { times: 1 }, "slow" );
 
     createDialogs();
     liInput.find('.button.delete').on('click', deleteCard);
 
     event.preventDefault();
-
-    $("<div></div>")
-    .appendTo("<li class='card'></li>")
-    .tooltip("option", "content", "Awesome title!" );
+    datePicker();
 
   }
 
@@ -87,12 +86,6 @@ const jtrello = (function() {
     connectWith: '.list-cards',
     items: '.card'
   });
-
-  }
-
-  function datePicker() {
-
-    $(".datepicker").datepicker();
 
   }
 
@@ -117,14 +110,47 @@ const jtrello = (function() {
       hide: {
         effect: "fade",
         duration: 500
+      },
+      buttons: {
+        Cancel: function() {
+        $(".card-content").empty();
+        $(this).dialog("close");
       }
-    });
+    }
 
-    $(".update").click(function() {
-      $("#dialog").dialog("open");
     });
 
     createTabs();
+    viewCard();
+
+  }
+
+  function datePicker() {
+
+    $(".datepicker").datepicker();
+
+  }
+
+  function setNewDate() {
+
+    $('.datepicker-new').datepicker();
+
+
+  }
+ 
+
+  function viewCard() {
+
+    let currentDate = $('.datepicker').datepicker("getDate");
+
+    $(".update").click(function() {
+      $("#dialog").dialog("open");
+
+      $(".card-content").append($("input:text").val());
+      $(".card-content").append($(this).closest('.card').text());
+      $(".datepicker-content").append(currentDate);
+
+    })
 
   }
 
@@ -135,7 +161,6 @@ const jtrello = (function() {
     });
 
   }
-
 
   function setColorWidget() {
 
@@ -196,10 +221,11 @@ const jtrello = (function() {
     createTabs();
     createDialogs();
     dragDrop();
-    datePicker();
     showCreateCard();
     setColorWidget();
-
+    datePicker();
+    setNewDate();
+ 
     bindEvents();
   }
 

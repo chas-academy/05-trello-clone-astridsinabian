@@ -1,6 +1,6 @@
 html,
 body {
-  background: rgb(175, 101, 101);
+  background: rgb(169, 185, 212);
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -18,6 +18,13 @@ h1 {
 
 a {
   color: #838c91;
+}
+
+p {
+  background-color: rgba(255, 255, 255, 0.815);
+  padding: 10px;
+  border-radius: 10px;
+  height: 100px;
 }
 
 a:hover {
@@ -103,7 +110,7 @@ input {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 4px;
-  padding: 0 4px;
+  padding: 15px;
   z-index: 1;
   height: 100%;
 }
@@ -111,10 +118,6 @@ input {
 .list-cards .add-new {
   margin: 10px 0;
 }
-/* 
-.list-cards .add-new .button {
-  
-} */
 
 .card {
   text-decoration: none;
@@ -218,4 +221,38 @@ button {
 
 .toggle-createcard {
   display: none;
+}
+
+.create-new-list {
+  padding: 15px;
+  height: 100%;
+}
+
+#tabs .ui-state-active a {
+  background: rgb(117, 147, 177);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+#tabs .ui-tabs-panel {
+  border: dotted 1px white;
+  border-radius: 10px;
+}
+
+.new-date {
+  display: flex;
+
+}
+
+.ui-dialog button {
+  flex: 0;
+
+}
+
+.add-list {
+  flex: 0;
+}
+
+.add-new-list {
+  width: 85%;
 }

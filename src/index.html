@@ -27,13 +27,20 @@
                     <div id="tabs">
                         <ul>
                             <li><a href="#view-card"><span>Full card view</span></a></li>
-                            <li><a href="#update-card"><span>Update card</span></a></li>
+                            <li><a href="#set-new-date"><span>Update deadline</span></a></li>
                         </ul>
                         <div id="view-card">
-                                <p>Here is where the full view of the card is going to be shown.</p>
+                                <h4>Full task content:</h4>
+                                <p class="card-content"></p>
+                                <h4>Deadline date for task:</h4>
+                                <p class="datepicker-content"></p>
                               </div>
-                              <div id="update-card">
-                                Here is where you can update your card.
+                              <div id="set-new-date">
+                                <p>Choose a different date for your deadline:</p>
+                                <form class="new-date" action="">
+                                <input type="text" class="datepicker-new" placeholder="Set new deadline">
+                                <button class="button btn-new-date"type="submit"><i class="far fa-check-square"></i></button>
+                            </form>
                               </div>
                     </div>
 
@@ -55,13 +62,13 @@
                         <button class="update"><i class="far fa-edit"></i></button>
                         <button class="button delete"><i class="fas fa-trash-alt"></i></button>
                     </li>
-                    <button class="toggle-button">+ Create card</button>
+                    <button class="toggle-button">+ Create newcard</button>
                     <div class="toggle-createcard">
                     <li class="add-new">
                             <form class="new-card" action="index.html">
                                     
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <input type="text" class="datepicker" placeholder="select date">
+                            <input type="text" name="title" placeholder="New card name" />
+                            <input type="text" class="datepicker" placeholder="Set deadline">
 
                             <button class="button add">Add new card</button>
 
@@ -84,12 +91,12 @@
                         <button class="button delete"><i class="fas fa-trash-alt"></i></button>
                     </li>
 
-                    <button class="toggle-button">+ Create card</button>
+                    <button class="toggle-button">+ Create new card</button>
                     <div class="toggle-createcard">
                     <li class="add-new">
                         <form class="new-card" action="index.html">
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <input type="text" class="datepicker" placeholder="select date">
+                            <input type="text" name="title" placeholder="New card name" />
+                            <input type="text" class="datepicker" placeholder="Set deadline">
                             <button class="button add">Add new card</button>
                         </form>
                     </li>
@@ -113,8 +120,8 @@
                     <div class="toggle-createcard">
                     <li class="add-new">
                         <form class="new-card" action="index.html">
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <input type="text" class="datepicker" placeholder="select date">
+                            <input type="text" name="title" placeholder="New card name" />
+                            <input type="text" class="datepicker" placeholder="Set deadline">
                             <button class="button add">Add new card</button>
                         </form>
                     </li>
@@ -123,10 +130,17 @@
             </div>
         </div>
         <div class="column">
-            <button id="new-list" class="button">Add new list</button>
-            <form> 
-                <input type="text" name="title" placeholder="List title" />
+                <div class="list">
+                        <div class="list-header">
+                                New List
+                            </div>
+                <div class="create-new-list">
+            <form class="new-list"> 
+                <input class="add-new-list" type="text" name="title" placeholder="List title" />
+                <button class="button add-list"><i class="fas fa-plus"></i></button>
             </form>
+        </div>
+            </div>
         </div>
     </div>
 
