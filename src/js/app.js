@@ -41,10 +41,9 @@ const jtrello = (function() {
 
 
   function createList() {
-    
+
     event.preventDefault();
     console.log("This should create a new list");
-    
 
   }
 
@@ -134,7 +133,6 @@ const jtrello = (function() {
   function setNewDate() {
 
     $('.datepicker-new').datepicker();
-
 
   }
  
