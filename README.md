@@ -1,3 +1,8 @@
+# 05-trello-clone assignment
+
+http://astridsinabian.chas.academy/05-trello-astrid/
+
+
 # Trello clone with jQuery, jQuery UI & Bootstrap
 
 Hello there, and welcome to this assignment where you'll be making a clone
